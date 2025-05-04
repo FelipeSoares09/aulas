@@ -1,0 +1,36 @@
+{
+  "transaction": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createdAt": "2025-04-24"
+    },
+    {
+      "id": 2,
+      "description": "Hamburguer",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 50,
+      "createdAt": "2025-04-24"
+    },
+    {
+      "description": "Lanche",
+      "price": 25,
+      "category": "Alimentação",
+      "type": "income",
+      "createdAt": "2025-04-25T14:38:13.959Z",
+      "id": 3
+    },
+    {
+      "description": "Academia",
+      "price": 120,
+      "category": "Saúde",
+      "type": "outcome",
+      "createdAt": "2025-04-25T17:13:54.405Z",
+      "id": 4
+    }
+  ]
+}
