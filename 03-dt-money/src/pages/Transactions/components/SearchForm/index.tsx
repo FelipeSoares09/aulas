@@ -15,7 +15,10 @@ type SearchFormInputs = z.infer<typeof searchFormSchema>;
 export function SearchForm() {
 
     const fetchTransactions = useContextSelector(TransactionsContext, (context) => {
-        return context.fetchTransactions
+        if (!context) {
+            throw new Error('TransactionsContext must be used within a TransactionsProvider');
+        }
+        return context.fetchTransactions;
     })
 
     const { 

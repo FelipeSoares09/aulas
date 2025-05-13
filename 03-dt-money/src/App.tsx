@@ -4,17 +4,23 @@ import { GlobalStyle } from "./styles/themes/global";
 import { TransactionsProvider } from "./contexts/TransactionsContext";
 import { Transactions } from "./pages/Transactions";
 
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
+}
 
 export function App() {
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-
-      <GlobalStyle />
+    <Layout>
       <TransactionsProvider>
         <Transactions />
       </TransactionsProvider>
-    </ThemeProvider>
+    </Layout>
   )
 }
 

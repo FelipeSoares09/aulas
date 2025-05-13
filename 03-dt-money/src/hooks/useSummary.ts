@@ -3,7 +3,10 @@ import { useContextSelector } from "use-context-selector";
 
 export function useSummary() {
     const transactions = useContextSelector(TransactionsContext, (context) => {
-        return context.transactions
+        if (!context) {
+            throw new Error('TransactionsContext must be used within a TransactionsProvider');
+        }
+        return context.transactions || [];
     });
 
     const summary = transactions.reduce(
