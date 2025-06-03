@@ -27,12 +27,17 @@ export function RevenueChart() {
     })
 
     const chartData = useMemo(() => {
-        return dailyRevenueInPeriod?.map(chartItem => {
+        if (!Array.isArray(dailyRevenueInPeriod)) {
+            return [];
+        }
+
+        return dailyRevenueInPeriod.map(chartItem => {
             return {
                 date: chartItem.date,
                 receipt: chartItem.receipt / 100,
-            }
-        })}, [dailyRevenueInPeriod])
+            };
+        });
+    }, [dailyRevenueInPeriod])
 
     return (
         <Card className="col-span-6">
@@ -55,7 +60,7 @@ export function RevenueChart() {
             <CardContent>
                 {dailyRevenueInPeriod ? (
                 <ResponsiveContainer width="100%" height={240}>
-                    <LineChart data={dailyRevenueInPeriod} style={{ fontSize: 12 }}>
+                    <LineChart data={chartData} style={{ fontSize: 12 }}>
                         <XAxis dataKey="date" tickLine={false} axisLine={false} dy={16} />
 
                         <YAxis tickLine={false} stroke="#888" axisLine={false} width={80} tickFormatter={(value: number) => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} />
